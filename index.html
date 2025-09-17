@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dynamic Kanban Board</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#2563eb">
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="brand">
+        <h1>Dynamic Kanban Board</h1>
+        <p class="sub">Create tasks, drag & drop between columns. Changes persist locally.</p>
+      </div>
+      <div class="controls">
+        <small class="muted">Tip: press <kbd>Enter</kbd> in the title field to add quickly.</small>
+        <button id="theme-toggle" aria-pressed="false" title="Toggle dark mode" class="icon-btn">🌙</button>
+      </div>
+    </header>
+
+    <main role="main">
+      <section class="create" aria-labelledby="create-title">
+        <h2 id="create-title" class="visually-hidden">Create Task</h2>
+        <form id="task-form" aria-label="Create task">
+          <label for="title" class="visually-hidden">Task title</label>
+          <input id="title" name="title" type="text" placeholder="Task title" required autocomplete="off" />
+
+          <label for="desc" class="visually-hidden">Short description</label>
+          <input id="desc" name="desc" type="text" placeholder="Short description (optional)" autocomplete="off" />
+
+          <button type="submit" class="primary">Add Task</button>
+        </form>
+      </section>
+
+      <section id="board" class="board" aria-label="Kanban board">
+        <!-- Columns rendered by JS -->
+      </section>
+    </main>
+  </div>
+
+  <!-- announcer for screen readers -->
+  <div id="announcer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Edit modal (hidden by default) -->
+  <div id="edit-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-panel">
+      <h3 id="modal-title">Edit Task</h3>
+      <form id="edit-form">
+        <label class="visually-hidden" for="edit-title">Title</label>
+        <input id="edit-title" name="title" type="text" placeholder="Title" required />
+        <label class="visually-hidden" for="edit-desc">Description</label>
+        <input id="edit-desc" name="desc" type="text" placeholder="Description (optional)" />
+        <div class="modal-actions">
+          <button type="submit" class="primary">Save</button>
+          <button type="button" id="edit-cancel" class="btn" data-close="true">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <small>Built with vanilla JS — drag, drop, edit, and persist tasks locally.</small>
+  </footer>
+
+  <!-- popup root for in-app notifications/confirmations -->
+  <div id="popup-root" aria-hidden="true"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

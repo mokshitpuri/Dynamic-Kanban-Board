@@ -1,0 +1,20 @@
+{
+  "name": "dynamic-kanban",
+  "version": "1.0.0",
+  "description": "Modular vanilla JS Dynamic Kanban Board (localStorage + drag & drop)",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 8000"
+  },
+  "keywords": [
+    "kanban",
+    "vanilla-js",
+    "localstorage",
+    "drag-and-drop"
+  ],
+  "author": "Mokshit Puri",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
